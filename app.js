@@ -13,7 +13,7 @@ router.use(express.static(path.resolve(__dirname, 'views'))); //We define the vi
 router.use(express.urlencoded({extended: true})); //We allow the data sent from the client to be coming in as part of the URL in GET and POST requests
 router.use(express.json()); //We include support for JSON that is coming from the client
 
-// Function to read in XML file and convert it to JSON
+// Function to read in XML file and convert it to
 function xmlFileToJs(filename, cb) {
   var filepath = path.normalize(path.join(__dirname, filename));
   fs.readFile(filepath, 'utf8', function(err, xmlStr) {
@@ -61,7 +61,7 @@ router.post('/post/json', function(req, res) {
     xmlFileToJs('PhoneStore.xml', function(err, result) {
       if (err) throw (err);
       //This is where you pass on information from the form inside index.html in a form of JSON and navigate through our JSON (XML) file to create a new entree object
-      result.cafemenu.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price}); //If your XML elements are differet, this is where you have to change to your own element names
+      result.phonemenu.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price}); //If your XML elements are differet, this is where you have to change to your own element names
       //Converting back to our original XML file from JSON
       jsToXmlFile('PhoneStore.xml', result, function(err) {
         if (err) console.log(err);
@@ -86,7 +86,7 @@ router.post('/post/delete', function(req, res) {
     xmlFileToJs('PhoneStore.xml', function(err, result) {
       if (err) throw (err);
       //This is where we delete the object based on the position of the section and position of the entree, as being passed on from index.html
-      delete result.cafemenu.section[obj.section].entree[obj.entree];
+      delete result.phonemenu.section[obj.section].entree[obj.entree];
       //This is where we convert from JSON and write back our XML file
       jsToXmlFile('PhoneStore.xml', result, function(err) {
         if (err) console.log(err);

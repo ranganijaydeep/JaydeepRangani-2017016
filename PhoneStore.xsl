@@ -5,27 +5,17 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Paddy's Cafe Menu</title>
+                <title>Phone Store</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
                 <link href="PhoneStoreStyles.css" rel="stylesheet" type="text/css" />
                 <!-- Include the JavaScript code for processing the XML data -->
-                <script src="PaddysCafeCode.js"></script>
-                <script>
-			        window.addEventListener("load", function() {
-			            document.forms[0].txtBillAmt.value = calculateBill('menuTable');
-			            document.querySelector("#calcBill").addEventListener("click", function() {
-			                document.forms[0].txtBillAmt.value = calculateBill('menuTable');
-			            });
-			            document.querySelector("#showVeg").addEventListener("click", function() {
-			                highlightVegetarian('menuTable', this.checked);
-			            });
-			        });
-			    </script>
+                
+                
             </head>
             <body>
                 <h2>
-                    <img src="javaco_tea_logo.gif" alt="Javaco Tea Logo" width="58" height="100" />Welcome to Paddy's Cafe</h2>
-                <p>Select your entrees from the menu below. To calculate the amount of the bill, click the Calculate Bill button. Check the "Highlight Vegetarian Meals" box to highlight vegetarian dishes.</p>
+                    <img src="https://media.giphy.com/media/KFi3MFDXXEmxzAh5Gw/giphy.gif" alt="Logo" width="80%" height="50%" backgroung-color="white"/><br>Placed Order List </br></h2>
+                <p>Your Selections are Below. Use Submit or delet function to edit Your item in list</p>
                 <table id="menuTable" border="1" class="indent">
                     <thead>
                         <tr>
@@ -38,16 +28,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <xsl:for-each select="/cafemenu/section">
+                        <xsl:for-each select="/phonemenu/section">
                             <tr>
                                 <td colspan="3">
                                     <xsl:value-of select="@name" />
                                 </td>
                             </tr>
                             <xsl:for-each select="entree">
-                                <tr>
-                                    <xsl:attribute name="vegetarian">
-                                        <xsl:value-of select="boolean(./@vegetarian)" />
+                                 <tr id="{position()}">
+                                    <xsl:attribute name="Apple">
+                                        <xsl:value-of select="boolean(./@Apple)" />
+                                    </xsl:attribute>
+                                    <xsl:attribute name="Samsung">
+                                        <xsl:value-of select="boolean(./@Samsung)" />
+                                    </xsl:attribute>
+                                    <xsl:attribute name="Nokia">
+                                        <xsl:value-of select="boolean(./@Nokia)" />
                                     </xsl:attribute>
                                     <td align="center">
                                         <input name="item0" type="checkbox" />
@@ -62,13 +58,7 @@
                             </xsl:for-each>
                         </xsl:for-each>
                     </tbody>
-                </table>
-                <form class="indent">
-                    <p>
-                        <input type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill" />
-				Total: €
-				<input type="text" name="txtBillAmt" /><input type="checkbox" name="cbOpts" value="isVeg" id="showVeg" /><label for="showVeg">Highlight Vegetarian Meals</label></p>
-                </form>
+                </table>               
             </body>
         </html>
     </xsl:template>
