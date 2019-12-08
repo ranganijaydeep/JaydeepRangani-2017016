@@ -5,6 +5,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image: url("https://mcdn.wallpapersafari.com/medium/68/5/iz2oju.jpg");
+  background-size: cover;
 }
 .footer {
   position: absolute;
@@ -19,6 +21,7 @@ table, th, td {
      border-collapse: collapse;
      border: 1px solid black;
      text-align: center;
+     background-color: rgba(255, 255, 255, 0.466);
 }
  table {
      border-collapse: collapse;
@@ -35,4 +38,16 @@ table, th, td {
 .selected {
             background-color: #dc3545;
             color: #FFF;
+}
+.company-Button {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.company-Button {
+  background-color: red;
 }
